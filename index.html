@@ -24,42 +24,6 @@
         .skill-bar {
             transition: width 1s ease-in-out;
         }
-        .tooltip {
-            position: relative;
-            display: inline-block;
-            cursor: pointer;
-        }
-        .tooltip .tooltiptext {
-            visibility: hidden;
-            width: 200px;
-            background-color: #333;
-            color: #fff;
-            text-align: center;
-            border-radius: 6px;
-            padding: 8px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            margin-left: -100px;
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 14px;
-        }
-        .tooltip:hover .tooltiptext {
-            visibility: visible;
-            opacity: 1;
-        }
-        .tooltip .tooltiptext::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: #333 transparent transparent transparent;
-        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-blue-50">
@@ -77,14 +41,8 @@
                     </div>
                 </div>
                 <div class="mt-4 md:mt-0 text-gray-700">
-                    <p class="flex items-center tooltip">
-                        <i class="fas fa-phone mr-2 text-blue-600"></i> +91-87707 74299
-                        <span class="tooltiptext">Click to call: +91-87707 74299</span>
-                    </p>
-                    <p class="flex items-center tooltip">
-                        <i class="fas fa-envelope mr-2 text-blue-600"></i> vijaysinghhurmale@gmail.com
-                        <span class="tooltiptext">Click to email: vijaysinghhurmale@gmail.com</span>
-                    </p>
+                    <p class="flex items-center"><i class="fas fa-phone mr-2 text-blue-600"></i> +91-87707 74299</p>
+                    <p class="flex items-center"><i class="fas fa-envelope mr-2 text-blue-600"></i> vijaysinghhurmale@gmail.com</p>
                     <p class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-blue-600"></i> Bhopal, Madhya Pradesh</p>
                 </div>
             </div>
@@ -142,7 +100,7 @@
                             <h3 class="text-2xl font-bold text-gray-900">Mast & Site Acquisition Engineer</h3>
                             <p class="text-xl text-blue-600 font-semibold">Reliance Jio Ltd.</p>
                         </div>
-                        <span class="text-gray-500 font-medium mt-2 md:mt-0">April 2013 – Present | Bhopal</span>
+                        <span class="text-gray-500 font-medium mt-2 md:mt-0">April 2013 – June 2025 | Bhopal</span>
                     </div>
                     <div class="mt-6">
                         <h4 class="text-lg font-semibold text-gray-900 mb-3">Key Responsibilities:</h4>
@@ -253,21 +211,15 @@
     <section class="py-16 px-4 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
-            <p class="text-xl mb-2">
+            <p class="text-xl mb-8">
                 Interested in discussing telecom infrastructure projects or potential opportunities?
             </p>
-            <p class="text-lg mb-8">
-                <i class="fas fa-phone mr-2"></i> +91-87707 74299 | 
-                <i class="fas fa-envelope mr-2 ml-4"></i> vijaysinghhurmale@gmail.com
-            </p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <a href="tel:+918770774299" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2">
-                    <i class="fas fa-phone"></i>
-                    <span>Call Now</span>
+                <a href="tel:+918770774299" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300">
+                    +91-87707 74299
                 </a>
-                <a href="mailto:vijaysinghhurmale@gmail.com" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 flex items-center justify-center space-x-2">
-                    <i class="fas fa-envelope"></i>
-                    <span>Send Email</span>
+                <a href="mailto:vijaysinghhurmale@gmail.com" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300">
+                    vijaysinghhurmale@gmail.com
                 </a>
             </div>
         </div>
@@ -281,13 +233,11 @@
                     <p class="text-gray-400">Mast & Site Acquisition Engineer</p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="mailto:vijaysinghhurmale@gmail.com" class="text-gray-400 hover:text-white transition-colors tooltip">
+                    <a href="mailto:vijaysinghhurmale@gmail.com" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fas fa-envelope text-2xl"></i>
-                        <span class="tooltiptext">Email: vijaysinghhurmale@gmail.com</span>
                     </a>
-                    <a href="tel:+918770774299" class="text-gray-400 hover:text-white transition-colors tooltip">
+                    <a href="tel:+918770774299" class="text-gray-400 hover:text-white transition-colors">
                         <i class="fas fa-phone text-2xl"></i>
-                        <span class="tooltiptext">Phone: +91-87707 74299</span>
                     </a>
                 </div>
             </div>
