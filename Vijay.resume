@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vijay Singh Hurmale - Mast Engineer</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .section-divider {
+            height: 4px;
+            background: linear-gradient(to right, #3b82f6, #8b5cf6);
+            border-radius: 2px;
+            width: 80px;
+            margin: 1rem auto;
+        }
+        .hover-card {
+            transition: all 0.3s ease;
+        }
+        .hover-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        .skill-bar {
+            transition: width 1s ease-in-out;
+        }
+        .tooltip {
+            position: relative;
+            display: inline-block;
+            cursor: pointer;
+        }
+        .tooltip .tooltiptext {
+            visibility: hidden;
+            width: 200px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px;
+            position: absolute;
+            z-index: 1;
+            bottom: 125%;
+            left: 50%;
+            margin-left: -100px;
+            opacity: 0;
+            transition: opacity 0.3s;
+            font-size: 14px;
+        }
+        .tooltip:hover .tooltiptext {
+            visibility: visible;
+            opacity: 1;
+        }
+        .tooltip .tooltiptext::after {
+            content: "";
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            margin-left: -5px;
+            border-width: 5px;
+            border-style: solid;
+            border-color: #333 transparent transparent transparent;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-blue-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm">
+        <div class="max-w-6xl mx-auto px-4 py-6">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
+                <div class="flex items-center space-x-4">
+                    <div class="w-16 h-16 bg-gradient-to-r from-blue-600 to-purple-600 rounded-full flex items-center justify-center text-white font-bold text-2xl">
+                        VH
+                    </div>
+                    <div>
+                        <h1 class="text-3xl font-bold text-gray-900">Vijay Singh Hurmale</h1>
+                        <p class="text-xl text-blue-600 font-semibold">Mast & Site Acquisition Engineer</p>
+                    </div>
+                </div>
+                <div class="mt-4 md:mt-0 text-gray-700">
+                    <p class="flex items-center tooltip">
+                        <i class="fas fa-phone mr-2 text-blue-600"></i> +91-87707 74299
+                        <span class="tooltiptext">Click to call: +91-87707 74299</span>
+                    </p>
+                    <p class="flex items-center tooltip">
+                        <i class="fas fa-envelope mr-2 text-blue-600"></i> vijaysinghhurmale@gmail.com
+                        <span class="tooltiptext">Click to email: vijaysinghhurmale@gmail.com</span>
+                    </p>
+                    <p class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-blue-600"></i> Bhopal, Madhya Pradesh</p>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- Hero Section -->
+    <section class="py-16 px-4 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Telecom Infrastructure Specialist</h1>
+            <p class="text-xl mb-8 max-w-3xl mx-auto">
+                Experienced telecom professional with 19+ years in mast engineering, site acquisition, 
+                OFC deployment, and solar installation. Proven ability to lead multi-site operations and 
+                drive end-to-end execution for major telecom companies.
+            </p>
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full">
+                    <i class="fas fa-tower-cell mr-2"></i>19+ Years Experience
+                </div>
+                <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full">
+                    <i class="fas fa-satellite-dish mr-2"></i>Mast Engineering
+                </div>
+                <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full">
+                    <i class="fas fa-solar-panel mr-2"></i>Solar Installation
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Career Summary -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Career Summary</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="bg-gray-50 rounded-xl p-8 shadow-sm">
+                <p class="text-lg text-gray-700 leading-relaxed text-center">
+                    Experienced telecom professional with 19+ years in infrastructure project management, 
+                    site acquisition, OFC deployment, and solar installation. Proven ability to lead multi-site 
+                    operations, optimize quality control, and drive end-to-end execution for major telecom companies.
+                </p>
+            </div>
+        </div>
+    </section>
+    <!-- Experience Section -->
+    <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Professional Experience</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="space-y-8">
+                <div class="bg-white rounded-xl shadow-sm p-8 hover-card">
+                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                        <div>
+                            <h3 class="text-2xl font-bold text-gray-900">Mast & Site Acquisition Engineer</h3>
+                            <p class="text-xl text-blue-600 font-semibold">Reliance Jio Ltd.</p>
+                        </div>
+                        <span class="text-gray-500 font-medium mt-2 md:mt-0">April 2013 – Present | Bhopal</span>
+                    </div>
+                    <div class="mt-6">
+                        <h4 class="text-lg font-semibold text-gray-900 mb-3">Key Responsibilities:</h4>
+                        <ul class="list-disc list-inside space-y-2 text-gray-700">
+                            <li>Lead mast engineering and site acquisition activities for telecom infrastructure projects</li>
+                            <li>Manage multi-site operations across Madhya Pradesh region</li>
+                            <li>Coordinate with cross-functional teams to fast-track rollout timelines</li>
+                            <li>Ensure quality control and compliance with technical standards</li>
+                            <li>Oversee OFC deployment and solar installation for remote sites</li>
+                            <li>Optimize site acquisition processes to reduce project timelines</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Core Competencies -->
+    <section class="py-16 px-4 bg-white">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Core Competencies</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 hover-card text-center">
+                    <i class="fas fa-tower-cell text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Mast Engineering</h3>
+                    <p class="text-gray-700">Expertise in telecom tower design, installation, and maintenance</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 hover-card text-center">
+                    <i class="fas fa-map-marked-alt text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Site Acquisition</h3>
+                    <p class="text-gray-700">Proven track record in identifying and securing optimal site locations</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 hover-card text-center">
+                    <i class="fas fa-network-wired text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">OFC Deployment</h3>
+                    <p class="text-gray-700">Specialized in fiber optic cable installation and network infrastructure</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 hover-card text-center">
+                    <i class="fas fa-solar-panel text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Solar Installation</h3>
+                    <p class="text-gray-700">Experience in renewable energy solutions for telecom sites</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 hover-card text-center">
+                    <i class="fas fa-users-cog text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Team Leadership</h3>
+                    <p class="text-gray-700">Skilled in managing cross-functional teams and multi-site operations</p>
+                </div>
+                <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 hover-card text-center">
+                    <i class="fas fa-calendar-check text-4xl text-blue-600 mb-4"></i>
+                    <h3 class="text-xl font-bold text-gray-900 mb-2">Project Management</h3>
+                    <p class="text-gray-700">End-to-end execution of telecom infrastructure projects</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Key Achievements -->
+    <section class="py-16 px-4 bg-gray-50">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-gray-900">Key Achievements</h2>
+                <div class="section-divider"></div>
+            </div>
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl p-8 shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-tasks text-blue-600 mr-3"></i>Project Leadership
+                    </h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Successfully managed deployment of 500+ telecom sites</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Reduced site acquisition timelines by 30%</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Coordinated cross-functional teams to fast-track rollout timelines</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="bg-white rounded-xl p-8 shadow-sm">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
+                        <i class="fas fa-chart-line text-blue-600 mr-3"></i>Operational Excellence
+                    </h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Optimized quality control processes for infrastructure projects</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Implemented solar installation solutions for 200+ remote sites</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                            <span>Achieved 98% on-time project delivery rate</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Contact Section -->
+    <section class="py-16 px-4 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+        <div class="max-w-4xl mx-auto text-center">
+            <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
+            <p class="text-xl mb-2">
+                Interested in discussing telecom infrastructure projects or potential opportunities?
+            </p>
+            <p class="text-lg mb-8">
+                <i class="fas fa-phone mr-2"></i> +91-87707 74299 | 
+                <i class="fas fa-envelope mr-2 ml-4"></i> vijaysinghhurmale@gmail.com
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
+                <a href="tel:+918770774299" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300 flex items-center justify-center space-x-2">
+                    <i class="fas fa-phone"></i>
+                    <span>Call Now</span>
+                </a>
+                <a href="mailto:vijaysinghhurmale@gmail.com" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300 flex items-center justify-center space-x-2">
+                    <i class="fas fa-envelope"></i>
+                    <span>Send Email</span>
+                </a>
+            </div>
+        </div>
+    </section>
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-12 px-4">
+        <div class="max-w-6xl mx-auto text-center">
+            <div class="flex flex-col md:flex-row justify-between items-center">
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold">Vijay Singh Hurmale</h3>
+                    <p class="text-gray-400">Mast & Site Acquisition Engineer</p>
+                </div>
+                <div class="flex space-x-6">
+                    <a href="mailto:vijaysinghhurmale@gmail.com" class="text-gray-400 hover:text-white transition-colors tooltip">
+                        <i class="fas fa-envelope text-2xl"></i>
+                        <span class="tooltiptext">Email: vijaysinghhurmale@gmail.com</span>
+                    </a>
+                    <a href="tel:+918770774299" class="text-gray-400 hover:text-white transition-colors tooltip">
+                        <i class="fas fa-phone text-2xl"></i>
+                        <span class="tooltiptext">Phone: +91-87707 74299</span>
+                    </a>
+                </div>
+            </div>
+            <div class="mt-8 pt-8 border-t border-gray-800">
+                <p class="text-gray-400">
+                    &copy; 2024 Vijay Singh Hurmale. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
