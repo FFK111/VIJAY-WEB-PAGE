@@ -15,16 +15,20 @@
             margin: 1rem auto;
         }
         .hover-card {
+            -webkit-transition: all 0.3s ease;
             transition: all 0.3s ease;
         }
         .hover-card:hover {
+            -webkit-transform: translateY(-10px);
             transform: translateY(-10px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
         .hover-card:hover .icon-animate {
+            -webkit-transform: scale(1.2) rotate(-10deg);
             transform: scale(1.2) rotate(-10deg);
         }
         .icon-animate {
+            -webkit-transition: -webkit-transform 0.3s ease;
             transition: transform 0.3s ease;
         }
         .profile-img {
@@ -35,7 +39,6 @@
             box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
             border-radius: 50%;
         }
-        /* Particle.js canvas style */
         #particles-js {
             position: absolute;
             width: 100%;
@@ -48,32 +51,39 @@
             position: relative;
             z-index: 1;
         }
-        /* Animation for elements scrolling into view */
         .fade-in-section {
             opacity: 0;
+            -webkit-transform: translateY(40px);
             transform: translateY(40px);
+            -webkit-transition: opacity 0.8s ease-out, -webkit-transform 0.8s ease-out;
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
         .fade-in-section.is-visible {
             opacity: 1;
+            -webkit-transform: translateY(0);
             transform: translateY(0);
         }
-        /* Typed.js cursor */
         .typed-cursor {
-            font-size: 3rem;
+            font-size: 2.5rem;
             color: #fff;
             opacity: 1;
+            -webkit-animation: typed-blink 0.7s infinite;
             animation: typed-blink 0.7s infinite;
         }
         @keyframes typed-blink {
             50% { opacity: 0.0; }
         }
-        /* Timeline Styles */
+        @-webkit-keyframes typed-blink {
+            50% { opacity: 0.0; }
+        }
+
+        /* --- Timeline Styles --- */
         .timeline {
             position: relative;
             max-width: 1200px;
             margin: 0 auto;
         }
+        /* The actual timeline (the vertical ruler) */
         .timeline::after {
             content: '';
             position: absolute;
@@ -85,18 +95,14 @@
             margin-left: -3px;
             border-radius: 3px;
         }
+        /* Container around content */
         .timeline-container {
             padding: 10px 40px;
             position: relative;
             background-color: inherit;
             width: 50%;
         }
-        .timeline-container.left {
-            left: 0;
-        }
-        .timeline-container.right {
-            left: 50%;
-        }
+        /* The circles on the timeline */
         .timeline-container::after {
             content: '';
             position: absolute;
@@ -109,9 +115,19 @@
             border-radius: 50%;
             z-index: 1;
         }
+        /* Place the container to the left */
+        .timeline-container.left {
+            left: 0;
+        }
+        /* Place the container to the right */
+        .timeline-container.right {
+            left: 50%;
+        }
+        /* Fix the circle for containers on the right side */
         .timeline-container.right::after {
             left: -14px;
         }
+        /* The actual content */
         .timeline-content {
             padding: 20px 30px;
             background-color: white;
@@ -119,14 +135,36 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
+        
+        /* --- Media queries for Mobile Compatibility --- */
+        @media screen and (max-width: 768px) {
+            .hero-content h1 {
+                font-size: 2.5rem; /* Adjust hero headline size for mobile */
+            }
+            .timeline::after {
+                left: 31px; /* Move timeline to the left */
+            }
+            .timeline-container {
+                width: 100%;
+                padding-left: 70px; /* Give space for the line */
+                padding-right: 25px;
+            }
+            .timeline-container.right {
+                left: 0%; /* Stack all containers to the left */
+            }
+            /* Move the circles to the left */
+            .timeline-container.left::after, .timeline-container.right::after {
+                left: 18px;
+            }
+        }
     </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-blue-50">
     <!-- Header -->
     <header class="bg-white shadow-sm sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-4 py-4">
-            <div class="flex flex-col md:flex-row md:items-center md:justify-between">
-                <div class="flex items-center space-x-4">
+            <div class="flex flex-col md:flex-row md:items-center md:justify-between text-center md:text-left">
+                <div class="flex items-center space-x-4 mx-auto md:mx-0">
                     <div>
                         <img src="https://i.imgur.com/fW3CBug.jpeg" alt="Vijay Singh Hurmale" class="profile-img">
                     </div>
@@ -136,9 +174,9 @@
                     </div>
                 </div>
                 <div class="mt-4 md:mt-0 text-gray-700 space-y-1">
-                    <p class="flex items-center"><i class="fas fa-phone mr-2 text-blue-600"></i> +91-87707 74299</p>
-                    <p class="flex items-center"><i class="fas fa-envelope mr-2 text-blue-600"></i> vijaysinghhurmale@gmail.com</p>
-                    <p class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-blue-600"></i> Bhopal, Madhya Pradesh</p>
+                    <p class="flex items-center justify-center md:justify-start"><i class="fas fa-phone mr-2 text-blue-600"></i> +91-87707 74299</p>
+                    <p class="flex items-center justify-center md:justify-start"><i class="fas fa-envelope mr-2 text-blue-600"></i> vijaysinghhurmale@gmail.com</p>
+                    <p class="flex items-center justify-center md:justify-start"><i class="fas fa-map-marker-alt mr-2 text-blue-600"></i> Bhopal, Madhya Pradesh</p>
                 </div>
             </div>
         </div>
@@ -277,8 +315,7 @@
                         <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span>Optimized quality control processes for infrastructure projects.</span></li>
                         <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span>Implemented solar installation solutions for 200+ remote sites.</span></li>
                         <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span>Achieved a 98% on-time project delivery rate.</span></li>
-                    </ul>
-                </div>
+                    </div>
             </div>
         </div>
     </section>
@@ -338,11 +375,11 @@
             "particles": {
                 "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
                 "color": { "value": "#ffffff" },
-                "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
-                "opacity": { "value": 0.5, "random": false, "anim": { "enable": false } },
-                "size": { "value": 3, "random": true, "anim": { "enable": false } },
+                "shape": { "type": "circle" },
+                "opacity": { "value": 0.5, "random": false },
+                "size": { "value": 3, "random": true },
                 "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
-                "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+                "move": { "enable": true, "speed": 4, "direction": "none", "out_mode": "out", "bounce": false }
             },
             "interactivity": {
                 "detect_on": "canvas",
