@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -18,29 +18,115 @@
             transition: all 0.3s ease;
         }
         .hover-card:hover {
-            transform: translateY(-5px);
+            transform: translateY(-10px);
             box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
         }
-        .skill-bar {
-            transition: width 1s ease-in-out;
+        .hover-card:hover .icon-animate {
+            transform: scale(1.2) rotate(-10deg);
+        }
+        .icon-animate {
+            transition: transform 0.3s ease;
         }
         .profile-img {
             width: 150px;
             height: 150px;
             object-fit: cover;
-            border: 4px solid #fff;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            border: 5px solid #fff;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);
             border-radius: 50%;
+        }
+        /* Particle.js canvas style */
+        #particles-js {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+        }
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+        /* Animation for elements scrolling into view */
+        .fade-in-section {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .fade-in-section.is-visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Typed.js cursor */
+        .typed-cursor {
+            font-size: 3rem;
+            color: #fff;
+            opacity: 1;
+            animation: typed-blink 0.7s infinite;
+        }
+        @keyframes typed-blink {
+            50% { opacity: 0.0; }
+        }
+        /* Timeline Styles */
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 6px;
+            background: linear-gradient(to bottom, #3b82f6, #8b5cf6);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -3px;
+            border-radius: 3px;
+        }
+        .timeline-container {
+            padding: 10px 40px;
+            position: relative;
+            background-color: inherit;
+            width: 50%;
+        }
+        .timeline-container.left {
+            left: 0;
+        }
+        .timeline-container.right {
+            left: 50%;
+        }
+        .timeline-container::after {
+            content: '';
+            position: absolute;
+            width: 25px;
+            height: 25px;
+            right: -12px;
+            background-color: white;
+            border: 4px solid #3b82f6;
+            top: 15px;
+            border-radius: 50%;
+            z-index: 1;
+        }
+        .timeline-container.right::after {
+            left: -14px;
+        }
+        .timeline-content {
+            padding: 20px 30px;
+            background-color: white;
+            position: relative;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
         }
     </style>
 </head>
 <body class="bg-gradient-to-br from-gray-50 to-blue-50">
     <!-- Header -->
-    <header class="bg-white shadow-sm">
-        <div class="max-w-6xl mx-auto px-4 py-6">
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4">
             <div class="flex flex-col md:flex-row md:items-center md:justify-between">
                 <div class="flex items-center space-x-4">
-                    <!-- Profile Image -->
                     <div>
                         <img src="https://i.imgur.com/fW3CBug.jpeg" alt="Vijay Singh Hurmale" class="profile-img">
                     </div>
@@ -49,7 +135,7 @@
                         <p class="text-xl text-blue-600 font-semibold">Mast & Site Acquisition Engineer</p>
                     </div>
                 </div>
-                <div class="mt-4 md:mt-0 text-gray-700">
+                <div class="mt-4 md:mt-0 text-gray-700 space-y-1">
                     <p class="flex items-center"><i class="fas fa-phone mr-2 text-blue-600"></i> +91-87707 74299</p>
                     <p class="flex items-center"><i class="fas fa-envelope mr-2 text-blue-600"></i> vijaysinghhurmale@gmail.com</p>
                     <p class="flex items-center"><i class="fas fa-map-marker-alt mr-2 text-blue-600"></i> Bhopal, Madhya Pradesh</p>
@@ -57,182 +143,162 @@
             </div>
         </div>
     </header>
+
     <!-- Hero Section -->
-    <section class="py-16 px-4 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
-        <div class="max-w-4xl mx-auto text-center">
-            <h1 class="text-4xl md:text-5xl font-bold mb-6">Telecom Infrastructure Specialist</h1>
+    <section class="py-24 px-4 bg-gradient-to-r from-blue-600 to-purple-700 text-white relative overflow-hidden">
+        <div id="particles-js"></div>
+        <div class="max-w-4xl mx-auto text-center hero-content">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">
+                <span id="typed-headline"></span>
+            </h1>
             <p class="text-xl mb-8 max-w-3xl mx-auto">
                 Experienced telecom professional with 19+ years in mast engineering, site acquisition, 
                 OFC deployment, and solar installation. Proven ability to lead multi-site operations and 
                 drive end-to-end execution for major telecom companies.
             </p>
             <div class="flex flex-wrap justify-center gap-4">
-                <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full">
-                    <i class="fas fa-tower-cell mr-2"></i>19+ Years Experience
-                </div>
-                <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full">
-                    <i class="fas fa-satellite-dish mr-2"></i>Mast Engineering
-                </div>
-                <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full">
-                    <i class="fas fa-solar-panel mr-2"></i>Solar Installation
-                </div>
+                <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full backdrop-blur-sm"><i class="fas fa-tower-cell mr-2"></i>19+ Years Experience</div>
+                <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full backdrop-blur-sm"><i class="fas fa-satellite-dish mr-2"></i>Mast Engineering</div>
+                <div class="bg-white bg-opacity-20 px-6 py-3 rounded-full backdrop-blur-sm"><i class="fas fa-solar-panel mr-2"></i>Solar Installation</div>
             </div>
         </div>
     </section>
-    <!-- Career Summary -->
-    <section class="py-16 px-4 bg-white">
+
+    <!-- About Me -->
+    <section class="py-16 px-4 bg-white fade-in-section">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-12">
-                <h2 class="text-3xl font-bold text-gray-900">Career Summary</h2>
+                <h2 class="text-3xl font-bold text-gray-900">About Me</h2>
                 <div class="section-divider"></div>
             </div>
-            <div class="bg-gray-50 rounded-xl p-8 shadow-sm">
-                <p class="text-lg text-gray-700 leading-relaxed text-center">
-                    Experienced telecom professional with 19+ years in infrastructure project management, 
-                    site acquisition, OFC deployment, and solar installation. Proven ability to lead multi-site 
-                    operations, optimize quality control, and drive end-to-end execution for major telecom companies.
+            <div class="bg-gray-50 rounded-xl p-8 shadow-sm text-center">
+                <p class="text-lg text-gray-700 leading-relaxed max-w-4xl mx-auto">
+                    With nearly two decades dedicated to advancing telecom infrastructure, I've developed a deep passion for connecting people and communities. My journey has taken me through every phase of project management, from initial site acquisition to final deployment. I thrive on challenges, leading teams to build robust and reliable networks that form the backbone of modern communication.
                 </p>
             </div>
         </div>
     </section>
-    <!-- Experience Section -->
-    <section class="py-16 px-4 bg-gray-50">
+
+    <!-- Experience Timeline -->
+    <section class="py-16 px-4 bg-gray-50 fade-in-section">
         <div class="max-w-6xl mx-auto">
-            <div class="text-center mb-12">
+            <div class="text-center mb-16">
                 <h2 class="text-3xl font-bold text-gray-900">Professional Experience</h2>
                 <div class="section-divider"></div>
             </div>
-            <div class="space-y-8">
-                <div class="bg-white rounded-xl shadow-sm p-8 hover-card">
-                    <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
-                        <div>
-                            <h3 class="text-2xl font-bold text-gray-900">Mast & Site Acquisition Engineer</h3>
-                            <p class="text-xl text-blue-600 font-semibold">Reliance Jio Ltd.</p>
+            <div class="timeline">
+                <div class="timeline-container right fade-in-section">
+                    <div class="timeline-content hover-card">
+                        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-4">
+                            <div>
+                                <h3 class="text-2xl font-bold text-gray-900">Mast & Site Acquisition Engineer</h3>
+                                <p class="text-xl text-blue-600 font-semibold">Reliance Jio Ltd.</p>
+                            </div>
+                            <span class="text-gray-500 font-medium mt-2 md:mt-0">April 2013 – June 2025</span>
                         </div>
-                        <span class="text-gray-500 font-medium mt-2 md:mt-0">April 2013 – June 2025 | Bhopal</span>
-                    </div>
-                    <div class="mt-6">
-                        <h4 class="text-lg font-semibold text-gray-900 mb-3">Key Responsibilities:</h4>
-                        <ul class="list-disc list-inside space-y-2 text-gray-700">
-                            <li>Lead mast engineering and site acquisition activities for telecom infrastructure projects</li>
-                            <li>Manage multi-site operations across Madhya Pradesh region</li>
-                            <li>Coordinate with cross-functional teams to fast-track rollout timelines</li>
-                            <li>Ensure quality control and compliance with technical standards</li>
-                            <li>Oversee OFC deployment and solar installation for remote sites</li>
-                            <li>Optimize site acquisition processes to reduce project timelines</li>
-                        </ul>
+                        <div class="mt-6">
+                            <h4 class="text-lg font-semibold text-gray-900 mb-3">Key Responsibilities:</h4>
+                            <ul class="list-disc list-inside space-y-2 text-gray-700">
+                                <li>Led mast engineering and site acquisition for key infrastructure projects.</li>
+                                <li>Managed multi-site operations across the Madhya Pradesh region.</li>
+                                <li>Coordinated with cross-functional teams to fast-track rollout timelines.</li>
+                                <li>Ensured quality control and compliance with all technical standards.</li>
+                                <li>Oversaw OFC deployment and solar installations for remote sites.</li>
+                                <li>Optimized site acquisition processes, successfully reducing project timelines.</li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </section>
+    
     <!-- Core Competencies -->
-    <section class="py-16 px-4 bg-white">
+    <section class="py-16 px-4 bg-white fade-in-section">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900">Core Competencies</h2>
                 <div class="section-divider"></div>
             </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 hover-card text-center">
-                    <i class="fas fa-tower-cell text-4xl text-blue-600 mb-4"></i>
+                    <i class="fas fa-tower-cell text-4xl text-blue-600 mb-4 icon-animate"></i>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Mast Engineering</h3>
-                    <p class="text-gray-700">Expertise in telecom tower design, installation, and maintenance</p>
+                    <p class="text-gray-700">Expertise in telecom tower design, installation, and maintenance.</p>
                 </div>
                 <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 hover-card text-center">
-                    <i class="fas fa-map-marked-alt text-4xl text-blue-600 mb-4"></i>
+                    <i class="fas fa-map-marked-alt text-4xl text-blue-600 mb-4 icon-animate"></i>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Site Acquisition</h3>
-                    <p class="text-gray-700">Proven track record in identifying and securing optimal site locations</p>
+                    <p class="text-gray-700">Proven track record in identifying and securing optimal site locations.</p>
                 </div>
                 <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 hover-card text-center">
-                    <i class="fas fa-network-wired text-4xl text-blue-600 mb-4"></i>
+                    <i class="fas fa-network-wired text-4xl text-blue-600 mb-4 icon-animate"></i>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">OFC Deployment</h3>
-                    <p class="text-gray-700">Specialized in fiber optic cable installation and network infrastructure</p>
+                    <p class="text-gray-700">Specialized in fiber optic cable installation and network infrastructure.</p>
                 </div>
                 <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 hover-card text-center">
-                    <i class="fas fa-solar-panel text-4xl text-blue-600 mb-4"></i>
+                    <i class="fas fa-solar-panel text-4xl text-blue-600 mb-4 icon-animate"></i>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Solar Installation</h3>
-                    <p class="text-gray-700">Experience in renewable energy solutions for telecom sites</p>
+                    <p class="text-gray-700">Experience in renewable energy solutions for telecom sites.</p>
                 </div>
                 <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 hover-card text-center">
-                    <i class="fas fa-users-cog text-4xl text-blue-600 mb-4"></i>
+                    <i class="fas fa-users-cog text-4xl text-blue-600 mb-4 icon-animate"></i>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Team Leadership</h3>
-                    <p class="text-gray-700">Skilled in managing cross-functional teams and multi-site operations</p>
+                    <p class="text-gray-700">Skilled in managing cross-functional teams and multi-site operations.</p>
                 </div>
                 <div class="bg-gradient-to-br from-blue-50 to-purple-50 rounded-xl p-6 hover-card text-center">
-                    <i class="fas fa-calendar-check text-4xl text-blue-600 mb-4"></i>
+                    <i class="fas fa-calendar-check text-4xl text-blue-600 mb-4 icon-animate"></i>
                     <h3 class="text-xl font-bold text-gray-900 mb-2">Project Management</h3>
-                    <p class="text-gray-700">End-to-end execution of telecom infrastructure projects</p>
+                    <p class="text-gray-700">End-to-end execution of telecom infrastructure projects.</p>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Key Achievements -->
-    <section class="py-16 px-4 bg-gray-50">
+    <section class="py-16 px-4 bg-gray-50 fade-in-section">
         <div class="max-w-6xl mx-auto">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-bold text-gray-900">Key Achievements</h2>
                 <div class="section-divider"></div>
             </div>
             <div class="grid md:grid-cols-2 gap-8">
-                <div class="bg-white rounded-xl p-8 shadow-sm">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                        <i class="fas fa-tasks text-blue-600 mr-3"></i>Project Leadership
-                    </h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                            <span>Successfully managed deployment of 500+ telecom sites</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                            <span>Reduced site acquisition timelines by 30%</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                            <span>Coordinated cross-functional teams to fast-track rollout timelines</span>
-                        </li>
+                <div class="bg-white rounded-xl p-8 shadow-sm hover-card">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center"><i class="fas fa-tasks text-blue-600 mr-3"></i>Project Leadership</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span>Successfully managed deployment of 500+ telecom sites.</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span>Reduced site acquisition timelines by 30%.</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span>Coordinated cross-functional teams to fast-track rollout timelines.</span></li>
                     </ul>
                 </div>
-                <div class="bg-white rounded-xl p-8 shadow-sm">
-                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center">
-                        <i class="fas fa-chart-line text-blue-600 mr-3"></i>Operational Excellence
-                    </h3>
-                    <ul class="space-y-3">
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                            <span>Optimized quality control processes for infrastructure projects</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                            <span>Implemented solar installation solutions for 200+ remote sites</span>
-                        </li>
-                        <li class="flex items-start">
-                            <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
-                            <span>Achieved 98% on-time project delivery rate</span>
-                        </li>
+                <div class="bg-white rounded-xl p-8 shadow-sm hover-card">
+                    <h3 class="text-xl font-bold text-gray-900 mb-4 flex items-center"><i class="fas fa-chart-line text-blue-600 mr-3"></i>Operational Excellence</h3>
+                    <ul class="space-y-3 text-gray-700">
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span>Optimized quality control processes for infrastructure projects.</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span>Implemented solar installation solutions for 200+ remote sites.</span></li>
+                        <li class="flex items-start"><i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i><span>Achieved a 98% on-time project delivery rate.</span></li>
                     </ul>
                 </div>
             </div>
         </div>
     </section>
+
     <!-- Contact Section -->
-    <section class="py-16 px-4 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+    <section class="py-20 px-4 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
         <div class="max-w-4xl mx-auto text-center">
             <h2 class="text-3xl font-bold mb-6">Get In Touch</h2>
-            <p class="text-xl mb-8">
-                Interested in discussing telecom infrastructure projects or potential opportunities?
-            </p>
+            <p class="text-xl mb-8">Interested in discussing telecom infrastructure projects or potential opportunities?</p>
             <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-6">
-                <a href="tel:+918770774299" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold hover:shadow-lg transition-all duration-300">
-                    +91-87707 74299
+                <a href="tel:+918770774299" class="bg-white text-blue-600 px-8 py-3 rounded-full font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300">
+                    <i class="fas fa-phone mr-2"></i> +91-87707 74299
                 </a>
                 <a href="mailto:vijaysinghhurmale@gmail.com" class="border-2 border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-blue-600 transition-all duration-300">
-                    vijaysinghhurmale@gmail.com
+                    <i class="fas fa-envelope mr-2"></i> vijaysinghhurmale@gmail.com
                 </a>
             </div>
         </div>
     </section>
+
     <!-- Footer -->
     <footer class="bg-gray-900 text-white py-12 px-4">
         <div class="max-w-6xl mx-auto text-center">
@@ -242,20 +308,66 @@
                     <p class="text-gray-400">Mast & Site Acquisition Engineer</p>
                 </div>
                 <div class="flex space-x-6">
-                    <a href="mailto:vijaysinghhurmale@gmail.com" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fas fa-envelope text-2xl"></i>
-                    </a>
-                    <a href="tel:+918770774299" class="text-gray-400 hover:text-white transition-colors">
-                        <i class="fas fa-phone text-2xl"></i>
-                    </a>
+                    <a href="mailto:vijaysinghhurmale@gmail.com" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-envelope text-2xl"></i></a>
+                    <a href="tel:+918770774299" class="text-gray-400 hover:text-white transition-colors"><i class="fas fa-phone text-2xl"></i></a>
                 </div>
             </div>
             <div class="mt-8 pt-8 border-t border-gray-800">
-                <p class="text-gray-400">
-                    &copy; 2024 Vijay Singh Hurmale. All rights reserved.
-                </p>
+                <p class="text-gray-400">&copy; 2024 Vijay Singh Hurmale. All rights reserved.</p>
             </div>
         </div>
     </footer>
+
+    <!-- JavaScript Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/typed.js@2.0.12"></script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+        // Typed.js initialization
+        new Typed('#typed-headline', {
+            strings: ['Telecom Infrastructure Specialist', 'Mast Engineering Expert', 'Site Acquisition Professional'],
+            typeSpeed: 50,
+            backSpeed: 30,
+            loop: true,
+            startDelay: 500,
+            backDelay: 2000,
+        });
+
+        // Particles.js configuration
+        particlesJS('particles-js', {
+            "particles": {
+                "number": { "value": 80, "density": { "enable": true, "value_area": 800 } },
+                "color": { "value": "#ffffff" },
+                "shape": { "type": "circle", "stroke": { "width": 0, "color": "#000000" } },
+                "opacity": { "value": 0.5, "random": false, "anim": { "enable": false } },
+                "size": { "value": 3, "random": true, "anim": { "enable": false } },
+                "line_linked": { "enable": true, "distance": 150, "color": "#ffffff", "opacity": 0.4, "width": 1 },
+                "move": { "enable": true, "speed": 4, "direction": "none", "random": false, "straight": false, "out_mode": "out", "bounce": false }
+            },
+            "interactivity": {
+                "detect_on": "canvas",
+                "events": { "onhover": { "enable": true, "mode": "grab" }, "onclick": { "enable": true, "mode": "push" }, "resize": true },
+                "modes": { "grab": { "distance": 140, "line_linked": { "opacity": 1 } }, "push": { "particles_nb": 4 } }
+            },
+            "retina_detect": true
+        });
+
+        // Intersection Observer for fade-in animations
+        const sections = document.querySelectorAll('.fade-in-section');
+        const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('is-visible');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            rootMargin: '0px',
+            threshold: 0.15
+        });
+        sections.forEach(section => {
+            observer.observe(section);
+        });
+    </script>
 </body>
 </html>
